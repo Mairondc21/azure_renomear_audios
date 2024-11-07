@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "py"
+version = "0.1.0"
+description = ""
+authors = ["Mairon.expertise <duartemairon@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyodbc = "^5.2.0"
+pandas = "^2.2.3"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.13.2"
+taskipy = "^1.14.0"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.taskipy.tasks]
+format = "isort src/ && black src/"
+lint = "flake8 src/"
+check = "task format && task lint"
